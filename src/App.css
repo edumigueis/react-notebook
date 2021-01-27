@@ -1,0 +1,13 @@
+.wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #f3f3f3;
+  height: 100vh;
+}
+.notes-container{
+  width: 30%;
+}
+.current-note-container{
+  width: 70%;
+  padding: 14px;
+}
