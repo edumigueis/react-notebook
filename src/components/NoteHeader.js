@@ -27,11 +27,13 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
         <input
           onChange={handleChange}
           value={titleState}
-          onBlur={() => onEdit({
-            title: titleState,
-            color: colorState,
-            text: "",
-          })}
+          onBlur={() =>
+            onEdit({
+              title: titleState,
+              color: colorState,
+              text: "",
+            })
+          }
           id="title-input"
         />
         <h6>{date}</h6>
