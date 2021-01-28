@@ -17,9 +17,23 @@
 }
 
 .note-header-tag {
-    background-color: #FFAB91;
-    height: 25px;
-    width: 25px;
-    border-radius: 13px;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
     margin-right: 20px;
+    cursor: pointer;
+}
+
+.side-gadgets {
+    display: flex;
+}
+
+#title-input{
+    outline: none;
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+    margin: 0;
 }

@@ -1,0 +1,16 @@
+.color-picker-wrapper{
+    background-color: #efefef;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 25px);
+    grid-gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: default !important;
+}
+.color-picker-wrapper div{
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    cursor: pointer;
+}

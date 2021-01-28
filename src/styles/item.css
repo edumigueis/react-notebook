@@ -1,4 +1,4 @@
-.item-wrapper{
+.item-wrapper {
     width: 100%;
     align-items: center;
     justify-content: space-between;
@@ -6,22 +6,32 @@
     padding: 0 30px;
     cursor: pointer;
 }
-.item-wrapper, .inner-item-wrapper{
+
+.item-wrapper,
+.inner-item-wrapper {
     display: flex;
 }
-.item-tag{
+
+.item-tag {
     width: 14px;
     height: 50px;
     margin-right: 14px;
     border-radius: 7px;
 }
-.item-text h5{
+
+.item-text h5 {
     margin: 0;
     color: #2f2f2f;
 }
-.item-text p{
+
+.item-text p {
     font-size: 11px;
     color: #ccc;
     margin: 0;
     padding-bottom: 8px;
+}
+
+.delete-icon-wrapper {
+    display: flex;
+    align-items: center;
 }

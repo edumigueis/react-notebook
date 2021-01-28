@@ -1,15 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/item.css";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaTrash } from "react-icons/fa";
 
-const Item = ({ title, date, color }) => {
+const Item = ({ note, onDelete, onClick }) => {
+  const openStyle = {
+    color: "#ccc",
+    cursor: "pointer",
+    display: "block",
+    marginRight: "10px",
+  };
+  const closeStyle = {
+    color: "#ccc",
+    cursor: "pointer",
+    display: "none",
+    marginRight: "10px",
+  };
+
+  const [openToDelete, setOpenToDelete] = useState(closeStyle);
+
   return (
-    <div className="item-wrapper">
+    <div
+      className="item-wrapper"
+      onDoubleClick={() => {
+        if (openToDelete.display !== "none") setOpenToDelete(closeStyle);
+        else setOpenToDelete(openStyle);
+      }}
+      onClick={() => onClick(note.id)}
+    >
       <div className="inner-item-wrapper">
-        <div className="item-tag" style={{ backgroundColor: color }}></div>
+        <div className="delete-icon-wrapper">
+          <FaTrash
+            style={openToDelete}
+            onClick={() => {
+              onDelete(note.id);
+              setOpenToDelete({
+                color: "#ccc",
+                cursor: "pointer",
+                display: "none",
+                marginRight: "10px",
+              });
+            }}
+          />
+        </div>
+        <div className="item-tag" style={{ backgroundColor: note.color }}></div>
         <div className="item-text">
-          <p>{date}</p>
-          <h5>{title}</h5>
+          <p>{note.date}</p>
+          <h5>{note.title}</h5>
         </div>
       </div>
       <FaChevronRight style={{ color: "#ccc", cursor: "pointer" }} />
