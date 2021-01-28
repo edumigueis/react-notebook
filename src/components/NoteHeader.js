@@ -16,7 +16,7 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
     setColorState(color);
     onEdit({
       title: titleState,
-      color: colorState,
+      color: color,
       text: "",
     });
   };
