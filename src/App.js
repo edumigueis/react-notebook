@@ -90,8 +90,13 @@ function App() {
     setNotes([...notes, newNote]);
   };
 
-  const editNote = (title) =>{
-    console.log(title);
+  const editNote = (changes) =>{
+    const newArray = [...notes]
+    console.log(changes);
+    let index = newArray.findIndex((x) => x.id === currentNote);
+    newArray[index] = {id: currentNote, title: changes.title, color: changes.color, date: newArray[index].date, text: changes.text}
+    setNotes(newArray);
+    console.log(notes);
   }
 
   return (
