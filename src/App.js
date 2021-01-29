@@ -44,9 +44,9 @@ function App() {
     },
   ]);
 
+  const [searchRes, setSearchRes] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
   const [currentNote, setCurrentNote] = useState(0);
-  const [keepAlive, setKeepAlive] = useState(notes);
-  const [firstSearch, setFirstSearch] = useState(true);
 
   const deleteNote = (id) => {
     console.log("del", id);
@@ -109,20 +109,17 @@ function App() {
   };
 
   const searchNotes = (keyWord) => {
+    let aux = [...notes];
     if (keyWord.trim() !== "") {
-      if(firstSearch){
-        setKeepAlive(notes);
-        setFirstSearch(false)
-      }
-      setNotes(
-        notes.filter(
+      setIsSearching(true);
+      setSearchRes(
+        aux.filter(
           (note) =>
             note.title.toUpperCase().includes(keyWord.toUpperCase()) === true
         )
       );
-    } else{
-      setFirstSearch(true);
-      setNotes([...keepAlive]);
+    } else {
+      setIsSearching(false);
     }
   };
 
@@ -132,7 +129,15 @@ function App() {
         <div className="notes-container">
           <Header onSubmitSearch={searchNotes} />
           {notes.length > 0 ? (
-            <Notes notes={notes} onDelete={deleteNote} onClick={openNote} />
+            isSearching === true ? (
+              <Notes
+                notes={searchRes}
+                onDelete={deleteNote}
+                onClick={openNote}
+              />
+            ) : (
+              <Notes notes={notes} onDelete={deleteNote} onClick={openNote} />
+            )
           ) : (
             <div className="err-notes-list-wrapper">
               <p>No notes to show</p>
