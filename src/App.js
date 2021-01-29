@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import Note from "./components/Note";
-import AddNoteButton from "./components/AddNoteButton"
+import AddNoteButton from "./components/AddNoteButton";
 import { useState } from "react";
 
 function App() {
@@ -147,7 +147,7 @@ function App() {
             ""
           )}
         </div>
-        <AddNoteButton newNote={addNote}/>
+        <AddNoteButton newNote={addNote} />
       </div>
     </div>
   );
