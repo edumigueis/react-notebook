@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/noteHeader.css";
 import { FaPen } from "react-icons/fa";
 import ColorPicker from "./ColorPicker";
@@ -9,10 +9,14 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
   const [colorState, setColorState] = useState(color);
   const [pickerOpen, setPickerOpen] = useState("none");
 
+  useEffect(() => {
+    setColorState(color);
+  }, [color]);
+
   const handleChange = (title) => {
     setTitleState(title);
     onEdit({
-      title: title,
+      title: titleState,
       color: colorState,
       text: "",
     });
