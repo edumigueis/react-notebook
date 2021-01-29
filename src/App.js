@@ -46,6 +46,7 @@ function App() {
 
   const [currentNote, setCurrentNote] = useState(0);
   const [keepAlive, setKeepAlive] = useState(notes);
+  const [firstSearch, setFirstSearch] = useState(true);
 
   const deleteNote = (id) => {
     console.log("del", id);
@@ -108,17 +109,19 @@ function App() {
   };
 
   const searchNotes = (keyWord) => {
-    console.log(keyWord);
-    console.log(notes);
     if (keyWord.trim() !== "") {
-      setKeepAlive(notes);
+      if(firstSearch){
+        setKeepAlive(notes);
+        setFirstSearch(false)
+      }
       setNotes(
         notes.filter(
           (note) =>
             note.title.toUpperCase().includes(keyWord.toUpperCase()) === true
         )
       );
-    } else {
+    } else{
+      setFirstSearch(true);
       setNotes([...keepAlive]);
     }
   };

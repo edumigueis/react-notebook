@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/noteHeader.css";
 import { FaPen } from "react-icons/fa";
 import ColorPicker from "./ColorPicker";
+import TitleInput from "./TitleInput";
 
 const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
   const [titleState, setTitleState] = useState(title);
   const [colorState, setColorState] = useState(color);
   const [pickerOpen, setPickerOpen] = useState("none");
 
-  useEffect(() => {
-    setColorState(color);
+  const handleChange = (title) => {
     setTitleState(title);
-  });
-
-  const handleChange = (e) => {
-    setTitleState(e.target.value);
+    onEdit({
+      title: title,
+      color: colorState,
+      text: "",
+    });
   };
 
   const handleColorPick = (color) => {
@@ -29,18 +30,7 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
   return (
     <div className="note-header">
       <div>
-        <input
-          onChange={handleChange}
-          value={titleState}
-          onBlur={() =>
-            onEdit({
-              title: titleState,
-              color: colorState,
-              text: "",
-            })
-          }
-          id="title-input"
-        />
+        <TitleInput onBlur={handleChange} title={title} />
         <h6>{date}</h6>
       </div>
       <div className="side-gadgets">
