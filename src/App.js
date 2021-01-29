@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import Note from "./components/Note";
+import AddNoteButton from "./components/AddNoteButton"
 import { useState } from "react";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
   ]);
 
   const [currentNote, setCurrentNote] = useState(0);
+  const [keepAlive, setKeepAlive] = useState(notes);
 
   const deleteNote = (id) => {
     console.log("del", id);
@@ -105,15 +107,33 @@ function App() {
     console.log(notes);
   };
 
+  const searchNotes = (keyWord) => {
+    console.log(keyWord);
+    console.log(notes);
+    if (keyWord.trim() !== "") {
+      setKeepAlive(notes);
+      setNotes(
+        notes.filter(
+          (note) =>
+            note.title.toUpperCase().includes(keyWord.toUpperCase()) === true
+        )
+      );
+    } else {
+      setNotes([...keepAlive]);
+    }
+  };
+
   return (
     <div className="App">
       <div className="wrapper">
         <div className="notes-container">
-          <Header />
+          <Header onSubmitSearch={searchNotes} />
           {notes.length > 0 ? (
             <Notes notes={notes} onDelete={deleteNote} onClick={openNote} />
           ) : (
-            "No notes to show"
+            <div className="err-notes-list-wrapper">
+              <p>No notes to show</p>
+            </div>
           )}
         </div>
         <div className="current-note-container">
@@ -127,6 +147,7 @@ function App() {
             ""
           )}
         </div>
+        <AddNoteButton newNote={addNote}/>
       </div>
     </div>
   );
