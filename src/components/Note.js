@@ -3,7 +3,7 @@ import "../styles/note.css";
 import NoteHeader from "../components/NoteHeader";
 
 const Note = ({ note, newNote, onEdit }) => {
-  if (note == undefined) {
+  if (note === undefined) {
     return (
       <div className="note-err-wrapper">
         <div>

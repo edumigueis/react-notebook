@@ -1,0 +1,17 @@
+.search-box-container{
+    margin-right: 12px;
+}
+.search-box-container input{
+    background-color: #fefefe;
+    width: 120px;
+    outline: none;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    text-indent: 5px;
+}
+
+.search-box-container input::placeholder{
+    color: #cccccc;
+}
