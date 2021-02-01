@@ -14,11 +14,11 @@ const TitleInput = ({ onBlur, title }) => {
   return (
     <div>
       <input
-        onChange={handleChange}
         value={titleState}
         onChange={handleChange}
         onBlur={() => onBlur(titleState)}
         id="title-input"
+        spellCheck={false}
       />
     </div>
   );

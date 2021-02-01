@@ -17,8 +17,7 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
     setTitleState(title);
     onEdit({
       title: titleState,
-      color: colorState,
-      text: "",
+      color: colorState
     });
   };
 
@@ -27,7 +26,6 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
     onEdit({
       title: titleState,
       color: color,
-      text: "",
     });
   };
 
