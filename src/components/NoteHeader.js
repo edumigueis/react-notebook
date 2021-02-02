@@ -11,12 +11,13 @@ const NoteHeader = ({ title, date, color, newNote, onEdit }) => {
 
   useEffect(() => {
     setColorState(color);
-  }, [color]);
+    setTitleState(title);
+  }, [color, title]);
 
   const handleChange = (title) => {
     setTitleState(title);
     onEdit({
-      title: titleState,
+      title: title,
       color: colorState
     });
   };
